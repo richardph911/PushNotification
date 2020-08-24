@@ -68,7 +68,8 @@ namespace LocalNotifications.Droid
             PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, 0, alarmIntent, PendingIntentFlags.CancelCurrent);
 
             var alarmManager = (AlarmManager)AndroidApp.Context.GetSystemService(Context.AlarmService);
-            alarmManager.Set(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime() + 2 * 1000, pendingIntent);
+            alarmManager.Set(AlarmType.RtcWakeup, DateTime.Now.Millisecond + 30000, pendingIntent);
+            //alarmManager.Set(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime() + 2 * 1000, pendingIntent);
 
             return messageId;
         }
